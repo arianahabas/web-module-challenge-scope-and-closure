@@ -27,11 +27,12 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ *  Counter1 has closure, counter2 does not.
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ *  Counter1 uses a closure because it is nesting a new function within a function. Parent-child relationship exists.
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *  Counter1 would be used when you want to keep "tally" ie you dont need "count = 0" all the time. The funtion it is nested in will always store the last known number.
+ *  Counter2 would be used when you need "count" to always equal 0.
 */
 
 // counter1 code
@@ -56,11 +57,14 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(){
 
-    /*Code Here*/
-
+    const score = Math.floor(Math.random() * 3);
+    return score;
 }
+
+console.log(inning());
+
 
 /* Task 3: finalScore()
 
@@ -76,11 +80,32 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(inning, number){
+  let 
+  return function inning(){
 
-  /*Code Here*/
+    const score = Math.floor(Math.random() * 3);
+    return score;
+}
+
 
 }
+
+// function personalDice(name){
+//   return function(){
+//       // generate random number between 1 and 6
+//     const newRoll = Math.floor(Math.random() * 6);
+//     console.log(`${name} rolled a ${newRoll}`)
+//   }
+// }
+
+// const dansRoll = personalDice("Dan");
+
+// const zoesRoll = personalDice("Zoe");
+
+
+// console.log(dansRoll());
+// console.log(dansRoll());
 
 /* Task 4: 
 
