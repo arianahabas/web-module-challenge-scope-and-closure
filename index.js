@@ -59,12 +59,11 @@ Write a function called `inning` that generates a random number of points that a
 
 function inning(){
 
-    const score = Math.floor(Math.random() * 3);
+    const score = Math.ceil(Math.random() * 2);
     return score;
 }
 
 console.log(inning());
-
 
 /* Task 3: finalScore()
 
@@ -80,32 +79,16 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(inning, number){
-  let 
-  return function inning(){
-
-    const score = Math.floor(Math.random() * 3);
-    return score;
-}
-
-
-}
-
-// function personalDice(name){
-//   return function(){
-//       // generate random number between 1 and 6
-//     const newRoll = Math.floor(Math.random() * 6);
-//     console.log(`${name} rolled a ${newRoll}`)
-//   }
-// }
-
-// const dansRoll = personalDice("Dan");
-
-// const zoesRoll = personalDice("Zoe");
-
-
-// console.log(dansRoll());
-// console.log(dansRoll());
+function finalScore(inning, num){  
+ let final = {"Home": 0, "Away": 0}
+ 
+   for (i=0; i<num; i++){
+    final.Home += inning();
+    final.Away += inning();
+  }
+  return final;
+};
+console.log(finalScore(inning,5));
 
 /* Task 4: 
 
@@ -128,8 +111,19 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(inning, num){
+  const finalGame = [];
+  let homeScore = 0;
+
+  let awayScore = 0;
+  
+  for(let i=1; i<=num; i++){
+    homeScore += inning();
+    awayScore += inning();
+    finalGame.push(`${i} inning: ${homeScore} - ${awayScore}`);
+  } 
+  finalGame.push(`Final Score: ${homeScore} - ${awayScore}`);
+  return finalGame;
 }
 
-
+console.log(scoreboard(inning, 9))
