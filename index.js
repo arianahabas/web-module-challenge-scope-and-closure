@@ -27,11 +27,12 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ *  Counter1 has closure, counter2 does not.
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ *  Counter1 uses a closure because it is nesting a new function within a function. Parent-child relationship exists.
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *  Counter1 would be used when you want to keep "tally" ie you dont need "count = 0" all the time. The funtion it is nested in will always store the last known number.
+ *  Counter2 would be used when you need "count" to always equal 0.
 */
 
 // counter1 code
@@ -56,11 +57,13 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(){
 
-    /*Code Here*/
-
+    const score = Math.ceil(Math.random() * 2);
+    return score;
 }
+
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -76,11 +79,16 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
-}
+function finalScore(inning, num){  
+ let final = {"Home": 0, "Away": 0}
+ 
+   for (i=0; i<num; i++){
+    final.Home += inning();
+    final.Away += inning();
+  }
+  return final;
+};
+console.log(finalScore(inning,5));
 
 /* Task 4: 
 
@@ -103,8 +111,19 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(inning, num){
+  const finalGame = [];
+  let homeScore = 0;
+
+  let awayScore = 0;
+  
+  for(let i=1; i<=num; i++){
+    homeScore += inning();
+    awayScore += inning();
+    finalGame.push(`${i} inning: ${homeScore} - ${awayScore}`);
+  } 
+  finalGame.push(`Final Score: ${homeScore} - ${awayScore}`);
+  return finalGame;
 }
 
-
+console.log(scoreboard(inning, 9))

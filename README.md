@@ -42,6 +42,10 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+  
+  Closure is when variables or other functions are "locked in" a specific scope. Variables and functions work within the "cages" they are locked into and are not accessible from the outside. 
+
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -58,13 +62,21 @@ const dansRoll = personalDice("Dan");
 const zoesRoll = personalDice("Zoe");
 
 
-dansRoll();
-dansRoll();
+console.log(dansRoll());
+console.log(dansRoll());
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+The "return function" (line 53) is where the closure is used. This function is "locked in" its parent function "personalDice" and can only be accessed when the parent function is invoked.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+The name (Dan) will always be the same. The number that he rolls will change due to the "return function" that generates a random number.
+
 c. What is the lexical scope of `newRoll`? 
+The curly brackets that belong to "return funtion" identify the scope of 'newRoll'.
+
 
 ### Task 2c - Exit Ticket
 
